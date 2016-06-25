@@ -1,0 +1,33 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<table style="width:100%">
+<h2>Author Details</h2>
+  <tr>
+    <th>name</th>
+    <th>email</th>
+  </tr>
+  {% if author_list %}
+  	{% for author in author_list %}
+	  <tr>
+	    <td>{{ author.name }}</td>
+	    <td>{{ author.email }}</td>
+	  </tr>
+  	{% endfor %}
+  {% endif%}
+</table>
+<form action="" method="post" style="margin-top:20px">
+  {% csrf_token %}
+	{{form.as_p}}
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<table style="width:100%">
+<h2>Book Details</h2>
+  <tr>
+    <th>title</th>
+    <th>price</th>
+    <th>isbn</th>
+    <!-- <th>authors</th> -->
+    <th>publisher</th>
+    <th>publication_date</th>
+    <th>available</th>
+  </tr>
+  {% if book_list %}
+  	{% for book in book_list %}
+	  <tr>
+	    <td>{{ book.title }}</td>
+	    <td>{{ book.price }}</td>
+	    <td>{{ book.isbn }}</td>
+	    <!-- <td>{{ book.book_list.authors.all }}</td> -->
+	    <td>{{ book.publisher }}</td>
+	    <td>{{ book.publication_date }}</td>
+	    <td>{{ book.available }}</td>
+
+	  </tr>
+  	{% endfor %}
+  {% endif%}
+</table>
+<form action="" method="post" style="margin-top:20px">
+  {% csrf_token %}
+	{{form.as_p}}
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

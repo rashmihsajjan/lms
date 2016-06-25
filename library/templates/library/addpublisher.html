@@ -1,0 +1,43 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<!-- <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<table style="width:100%">
+<h2>Publisher Details</h2>
+  <tr>
+    <th>name</th>
+    <th>address</th>
+    <th>city</th>
+    <th>state</th>
+    <th>country</th>
+    <th>website</th>
+  </tr>
+  {% if publisher_list %}
+  	{% for publisher in publisher_list %}
+	  <tr>
+	    <td>{{ publisher.name }}</td>
+	    <td>{{ publisher.address }}</td>
+	    <td>{{ publisher.city }}</td>
+	    <td>{{ publisher.state }}</td>
+	    <td>{{ publisher.country }}</td>
+	    <td>{{ publisher.website }}</td>
+	  </tr>
+  	{% endfor %}
+    <tr><a href="/library/publishers/"><input type="button" value="Add record to Publishers List" /></a></tr>
+
+  {% endif%}
+</table> -->
+<form action="" method="post" style="margin-top:20px">
+  {% csrf_token %}
+	{{form.as_p}}
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

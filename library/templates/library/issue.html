@@ -1,0 +1,39 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<table style="width:100%">
+<h2>Issue Details</h2>
+  <tr>
+    <th>book</th>
+    <th>issued_to</th>
+    <th>issued_date</th>
+    <th>due_date</th>
+    <th>issued_by</th>
+  </tr>
+  {% if issue_list %}
+  	{% for issue in issue_list %}
+	  <tr>
+	    <td>{{ issue.book.title }}</td>
+	    <td>{{ issue.user_profile.user.username}}</td>
+	    <td>{{ issue.issued_date }}</td>
+	    <td>{{ issue.due_date }}</td>
+	    <td>{{ issue.issued_by.user.username }}</td>
+	  </tr>
+  	{% endfor %}
+  {% endif%}
+</table>
+<form action="" method="post" style="margin-top:20px">
+  {% csrf_token %}
+	{{form.as_p}}
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
